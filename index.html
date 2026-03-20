@@ -578,16 +578,21 @@ function updateDots(id) {
     </div>
     <p class="section-desc">Denize sıfır konumumuzu ve odalarımızı keşfedin.</p>
   </div>
-  <div class="gallery-grid">
-    <div class="gallery-item g1"><img src="karasu-otel-denize-sıfır-5.jpg" alt="Deniz"><div class="goverlay"></div></div>
-    <div class="gallery-item g2"><img src="karasu-otel-1.jpg" alt="Otel"><div class="goverlay"></div></div>
-    <div class="gallery-item g3"><img src="karasu-otel-denize-sıfır-1.jpg" alt="Oda"><div class="goverlay"></div></div>
-    <div class="gallery-item g4"><img src="karasu-otel-denize-sıfır-4.jpg" alt="Sahil"><div class="goverlay"></div></div>
-    <div class="gallery-item g5"><img src="karasu-otel-denize-sıfır-kahvaltı-6.jpg" alt="Otel"><div class="goverlay"></div></div>
-    <div class="gallery-item g5"><img src="karasu-otel-denize-sıfır-3.jpg" alt="Otel"><div class="goverlay"></div></div>
-    <div class="gallery-item g5"><img src="karasu-otel-denize-sıfır-2.jpg" alt="Otel"><div class="goverlay"></div></div>
-  
+<div class="gallery-slider">
+  <div class="gallery-track" id="galleryTrack">
+    <img src="karasu-otel-denize-sıfır-5.jpg" alt="Otel">
+    <img src="karasu-otel-1.jpg" alt="Otel">
+    <img src="karasu-otel-denize-sıfır-1.jpg" alt="Otel">
+    <img src="karasu-otel-denize-sıfır-4.jpg" alt="Otel">
+    <img src="karasu-otel-denize-sıfır-kahvaltı-6.jpg" alt="Otel">
+    <img src="karasu-otel-denize-sıfır-3.jpg" alt="Otel">
+    <img src="karasu-otel-denize-sıfır-2.jpg" alt="Otel">
   </div>
+  <div class="gallery-nav">
+    <button onclick="galeriKaydır(-1)">&#8249;</button>
+    <button onclick="galeriKaydır(1)">&#8250;</button>
+  </div>
+</div>
 </section>
 
 <!-- GEZİLECEK YERLER -->
@@ -801,6 +806,16 @@ document.querySelectorAll('.gezicard, .contact-item').forEach(el => {
   el.style.transition='opacity 0.55s ease, transform 0.55s ease';
   observer.observe(el);
 });
+  let galeriIndex = 0;
+function galeriKaydır(dir) {
+  const track = document.getElementById('galleryTrack');
+  const items = track.children.length;
+  const visible = window.innerWidth < 920 ? 1 : 3;
+  const max = items - visible;
+  galeriIndex = Math.max(0, Math.min(galeriIndex + dir, max));
+  const w = track.children[0].offsetWidth;
+  track.style.transform = 'translateX(-' + (galeriIndex * w) + 'px)';
+}
 </script>
 </body>
 </html>
