@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ÖZCAN OTEL – Karasu, Sakarya</title>
+<title>Özcan Otel – Karasu, Sakarya</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -36,8 +36,8 @@ nav.scrolled {
   box-shadow:0 2px 30px rgba(0,0,0,0.15);
 }
 .logo {
-  font-family:'Jost',sans-serif; font-size:1.6rem;
-  font-weight:600; color:#fff; letter-spacing:1px;
+  font-family:'Cormorant Garamond',serif; font-size:1.6rem;
+  font-weight:300; color:#fff; letter-spacing:3px;
   text-transform:uppercase; text-decoration:none; flex-shrink:0;
 }
 .logo span { color:var(--gold); }
@@ -77,7 +77,7 @@ nav.scrolled .nav-logo { filter:brightness(0) invert(1) sepia(1) saturate(2) hue
 .mobile-menu.open { display:flex; }
 .mobile-menu a {
   color:#fff; text-decoration:none; font-size:1.5rem;
-  font-family:'Jost',sans-serif; font: weight 600;
+  font-family:'Cormorant Garamond',serif; font-weight:300;
   letter-spacing:3px; text-transform:uppercase; transition:color 0.2s;
 }
 .mobile-menu a:hover { color:var(--gold); }
@@ -102,14 +102,15 @@ nav.scrolled .nav-logo { filter:brightness(0) invert(1) sepia(1) saturate(2) hue
 .hero-content {
   position:relative; z-index:2; text-align:center; color:#fff;
   padding:0 24px; animation:fadeUp 1.2s ease both;
-}.hero-tagline { font-size:0.85rem; letter-spacing:6px; text-transform:uppercase; color:#c6a96b; margin-bottom:20px; opacity:20; font-weight:600; }
+}
+.hero-tagline { font-size:0.72rem; letter-spacing:6px; text-transform:uppercase; color:var(--gold-light); margin-bottom:20px; opacity:0.9; }
 .hero-title {
-  font-family:'Jost',sans-serif;
-  font-size:clamp(2.5rem,6vw,6rem);
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(3.2rem,9vw,7.5rem);
   font-weight:300; line-height:1.02; margin-bottom:18px;
   text-shadow: 0 2px 20px rgba(0,0,0,0.3);
 }
-.hero-title em { font-style:normal; color:#ffffff; font-family:'Jost',sans-serif; }
+.hero-title em { font-style:italic; color:var(--gold-light); }
 .hero-wave { font-size:1.5rem; margin-bottom:14px; display:block; }
 .hero-sub {
   font-size:clamp(0.9rem,2.5vw,1.1rem); letter-spacing:3px;
@@ -177,9 +178,9 @@ nav.scrolled .nav-logo { filter:brightness(0) invert(1) sepia(1) saturate(2) hue
 /* ── SECTION BASE ── */
 section { padding:96px 5%; }
 .section-label { font-size:0.65rem; letter-spacing:5px; text-transform:uppercase; color:var(--gold); margin-bottom:12px; display:block; }
-.section-title { font-family:'Jost',sans-serif; font-size:clamp(2rem,4vw,3.2rem); font-weight:300; line-height:1.12; color:var(--dark); margin-bottom:14px; }
-.section-title em { font-style:normal; color:var(--gold); }
-.section-desc { font-size:0.92rem; line-height:1.95; color:var(--muted); font-weight:300; }
+.section-title { font-family:'Cormorant Garamond',serif; font-size:clamp(2rem,4vw,3.2rem); font-weight:300; line-height:1.12; color:var(--dark); margin-bottom:14px; }
+.section-title em { font-style:italic; color:var(--gold); }
+.section-desc { font-size:0.91rem; line-height:1.95; color:var(--muted); font-weight:300; }
 .divider { width:50px; height:1px; background:linear-gradient(to right,var(--gold),transparent); margin:16px 0; }
 
 /* ── ODALAR ── */
@@ -196,7 +197,7 @@ section { padding:96px 5%; }
   border-left:3px solid var(--gold);
 }
 .room-size { font-size:0.65rem; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:8px; }
-.room-name { font-family:'Jost',sans-serif; font-size:2.1rem; font-weight:300; color:var(--dark); margin-bottom:4px; }
+.room-name { font-family:'Cormorant Garamond',serif; font-size:2.1rem; font-weight:300; color:var(--dark); margin-bottom:4px; }
 .room-cap { font-size:0.8rem; color:var(--muted); letter-spacing:1px; margin-bottom:24px; }
 .room-features { list-style:none; margin-bottom:32px; display:grid; grid-template-columns:1fr 1fr; gap:8px 14px; }
 .room-features li { font-size:0.8rem; color:var(--text); padding-left:14px; position:relative; font-weight:300; }
@@ -224,7 +225,7 @@ section { padding:96px 5%; }
 .gallery-header { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:44px; gap:20px; flex-wrap:wrap; }
 .gallery-grid {
   display:grid; grid-template-columns:repeat(3,1fr);
-  grid-auto-rows:255px; gap:3px;
+  grid-template-rows:255px 255px; gap:3px;
 }
 .gallery-grid .g1 { grid-column:1; grid-row:1; }
 .gallery-grid .g2 { grid-column:2; grid-row:1/3; }
@@ -258,7 +259,7 @@ section { padding:96px 5%; }
 .gezicard:hover .gezicard-img { transform:scale(1.05); }
 .gezicard-body { padding:28px 28px 32px; border-top:2px solid var(--gold-pale); }
 .gezicard-dist { font-size:0.65rem; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:8px; }
-.gezicard-name { font-family:'Jost',sans-serif; font-size:1.55rem; font-weight:400; color:var(--dark); margin-bottom:9px; }
+.gezicard-name { font-family:'Cormorant Garamond',serif; font-size:1.55rem; font-weight:400; color:var(--dark); margin-bottom:9px; }
 .gezicard-desc { font-size:0.82rem; color:var(--muted); line-height:1.82; font-weight:300; }
 
 /* ── İLETİŞİM ── */
@@ -276,7 +277,7 @@ section { padding:96px 5%; }
 .contact-item-text span, .contact-item-text a { font-size:0.87rem; color:var(--text); font-weight:300; line-height:1.6; text-decoration:none; }
 .contact-item-text a:hover { color:var(--gold); }
 .contact-btns { display:flex; gap:10px; flex-wrap:wrap; }
-.contact-form-box h3 { font-family:'Jost',sans-serif; font-size:1.75rem; font-weight:300; color:var(--dark); margin-bottom:26px; }
+.contact-form-box h3 { font-family:'Cormorant Garamond',serif; font-size:1.75rem; font-weight:300; color:var(--dark); margin-bottom:26px; }
 .form-group { margin-bottom:16px; }
 .form-group label { display:block; font-size:0.64rem; letter-spacing:2px; text-transform:uppercase; color:var(--muted); margin-bottom:6px; }
 .form-group input, .form-group textarea {
@@ -287,31 +288,6 @@ section { padding:96px 5%; }
 .form-group input:focus, .form-group textarea:focus { border-color:var(--gold); background:var(--white); }
 .form-group textarea { height:115px; resize:none; }
 .form-row { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
-
-
-/* ── SLIDER ── */
-.room-slider { position:relative; overflow:hidden; width:100%; aspect-ratio:4/3; }
-.room-slides { display:flex; height:100%; transition:transform 0.5s ease; }
-.room-slide-img { flex:0 0 100%; width:100%; object-fit:cover; display:block; height:100%; }
-.slider-btn {
-  position:absolute; top:50%; transform:translateY(-50%);
-  background:rgba(0,0,0,0.4); color:#fff; border:none;
-  width:40px; height:40px; font-size:1.4rem; cursor:pointer;
-  transition:background 0.2s; z-index:2; display:flex;
-  align-items:center; justify-content:center;
-}
-.slider-btn:hover { background:rgba(0,0,0,0.7); }
-.slider-prev { left:10px; }
-.slider-next { right:10px; }
-.slider-dots {
-  position:absolute; bottom:12px; left:50%; transform:translateX(-50%);
-  display:flex; gap:6px; z-index:2;
-}
-.slider-dot {
-  width:8px; height:8px; border-radius:50%;
-  background:rgba(255,255,255,0.5); cursor:pointer; transition:background 0.2s;
-}
-.slider-dot.active { background:#fff; }
 
 /* ── FLOAT BUTTONS ── */
 .float-btns { position:fixed; bottom:26px; right:24px; z-index:200; display:flex; flex-direction:column; gap:10px; align-items:flex-end; }
@@ -354,13 +330,12 @@ footer { background:var(--dark); padding:56px 5% 28px; }
   .rez-field:last-of-type { border-bottom:none; }
   .rez-submit { margin-left:0; width:100%; padding:18px; min-height:auto; }
   .room-panel { grid-template-columns:1fr; }
-  .room-slider { aspect-ratio:16/9; }
   .room-img { aspect-ratio:16/9; }
   .room-info { padding:28px 22px; border-left:none; border-top:3px solid var(--gold); }
   .room-features { grid-template-columns:1fr; }
   .room-btns { flex-direction:column; }
   .btn-wa, .btn-ara { justify-content:center; }
-  .gallery-grid { grid-template-columns:1fr 1fr; grid-auto-rows:190px; }
+  .gallery-grid { grid-template-columns:1fr 1fr; grid-template-rows:190px 190px 190px; }
   .gallery-grid .g2 { grid-column:1; grid-row:auto; }
   .gallery-grid .g5 { grid-column:1/3; }
   .geziler-grid { grid-template-columns:1fr; gap:2px; }
@@ -374,7 +349,7 @@ footer { background:var(--dark); padding:56px 5% 28px; }
   .contact-btns .btn-wa, .contact-btns .btn-ara { justify-content:center; }
 }
 @media (max-width:480px) {
-  .gallery-grid { grid-template-columns:1fr 1fr; grid-template-rows:auto; }
+  .gallery-grid { grid-template-columns:1fr; grid-template-rows:auto; }
   .gallery-grid .g5 { grid-column:1; }
   .gallery-item { height:210px; }
   .gezicard-img { height:180px; }
@@ -382,36 +357,12 @@ footer { background:var(--dark); padding:56px 5% 28px; }
   .float-btn { width:48px; height:48px; }
 }
 </style>
-<script>
-const sliderIndex = {};
-function slideRoom(id, dir) {
-  const slides = document.getElementById(id);
-  const total = slides.children.length;
-  sliderIndex[id] = ((sliderIndex[id] || 0) + dir + total) % total;
-  const w = slides.parentElement.offsetWidth;
-  slides.style.transform = 'translateX(-' + (sliderIndex[id] * w) + 'px)';
-  updateDots(id);
-}
-function goSlide(id, i) {
-  sliderIndex[id] = i;
-  const slides2 = document.getElementById(id);
-  const w2 = slides2.parentElement.offsetWidth;
-  slides2.style.transform = 'translateX(-' + (i * w2) + 'px)';
-  updateDots(id);
-}
-function updateDots(id) {
-  const dotsId = id.replace('Slides','Dots');
-  const dots = document.getElementById(dotsId);
-  if (!dots) return;
-  [...dots.children].forEach((d,i) => d.classList.toggle('active', i === sliderIndex[id]));
-}
-</script>
 </head>
 <body>
 
 <!-- NAV -->
 <nav id="navbar">
-  <a href="#" class="logo-img-wrap"><img src="appleLogo1.png" class="nav-logo" alt="Özcan Otel"></a>
+  <a href="#" class="logo-img-wrap"><img src="appleLogo.jpg" class="nav-logo" alt="Özcan Otel"></a>
   <ul class="nav-links">
     <li><a href="#odalar">Odalar</a></li>
     <li><a href="#galeri">Galeri</a></li>
@@ -446,8 +397,8 @@ function updateDots(id) {
   <div class="hero-bg"></div>
   <div class="hero-content">
     <div class="hero-tagline">Karasu · Sakarya · Denize Sıfır</div>
-    <h1 class="hero-title">ÖZCAN <em>OTEL</em></h1>
-    <span class="hero-wave"></span>
+    <h1 class="hero-title">Özcan <em>Otel</em></h1>
+    <span class="hero-wave">🌊</span>
     <p class="hero-sub">Denizin Huzuru, Konforun Adresi</p>
     <div class="hero-btns">
       <a href="#rezervasyon-bar" class="btn-primary">Rezervasyon Yap</a>
@@ -469,12 +420,20 @@ function updateDots(id) {
     <input type="date" id="cikis">
   </div>
   <div class="rez-field">
+    <label>Oda Tipi</label>
+    <select id="odaTipi">
+      <option value="">Seçiniz</option>
+      <option value="Standart Oda">Standart Oda</option>
+      <option value="Aile Odası">Aile Odası</option>
+    </select>
+  </div>
+  <div class="rez-field">
     <label>Kişi Sayısı</label>
     <select id="kisi">
       <option value="1">1 Kişi</option>
       <option value="2" selected>2 Kişi</option>
       <option value="3">3 Kişi</option>
-      
+      <option value="4">4 Kişi</option>
     </select>
   </div>
   <button class="rez-submit" onclick="whatsappRez()">Rezervasyon Sorgula</button>
@@ -489,36 +448,20 @@ function updateDots(id) {
     <p class="section-desc">Denizin hemen kenarında, her oda konfor ve dinginliği bir arada sunar.</p>
   </div>
   <div class="room-panel active">
-    <div class="room-slider">
-      <div class="room-slides" id="standartSlides">
-        <img class="room-slide-img" src="karasu-otel-standart-oda-3-deniz-manzarali.jpg" alt="Standart Oda 1">
-        <img class="room-slide-img" src="karasu-otel-standart-oda-1.jpg" alt="Standart Oda 2">
-        <img class="room-slide-img" src="karasu-otel-standart-oda-2.jpg" alt="Standart Oda 3">
-        <img class="room-slide-img" src="karasu-otel-standart-oda-3-deniz-manzarali.jpg" alt="Standart Oda 4">
-      </div>
-      <button class="slider-btn slider-prev" onclick="slideRoom('standartSlides',-1)">&#8249;</button>
-      <button class="slider-btn slider-next" onclick="slideRoom('standartSlides',1)">&#8250;</button>
-      <div class="slider-dots" id="standartDots">
-        <span class="slider-dot active" onclick="goSlide('standartSlides',0)"></span>
-        <span class="slider-dot" onclick="goSlide('standartSlides',1)"></span>
-        <span class="slider-dot" onclick="goSlide('standartSlides',2)"></span>
-        <span class="slider-dot" onclick="goSlide('standartSlides',3)"></span>
-        <span class="slider-dot" onclick="goSlide('standartSlides',4)"></span>
-      </div>
-    </div>
+    <img class="room-img" src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=900&q=80" alt="Standart Oda">
     <div class="room-info">
-      <div class="room-size">18 m²</div>
+      <div class="room-size">20–25 m²</div>
       <div class="room-name">Standart Oda</div>
-      <div class="room-cap">👤 1–2 </div>
+      <div class="room-cap">👤 1–2 Yetişkin</div>
       <ul class="room-features">
         <li>Çift veya iki tek yatak</li>
-        <li>Deniz Manzarası</li>
+        <li>Deniz / bahçe manzarası</li>
         <li>Klima & Isıtma</li>
         <li>Ücretsiz Wi-Fi</li>
         <li>LCD TV</li>
-        <li>Mini Buzdolabı</li>
+        <li>Minibar</li>
         <li>Saç kurutma makinesi</li>
-        
+        <li>Güvenli kasa</li>
       </ul>
       <div class="room-btns">
         <a href="https://wa.me/905318992748?text=Standart%20Oda%20rezervasyonu%20hakkında%20bilgi%20almak%20istiyorum" target="_blank" class="btn-wa">
@@ -531,36 +474,20 @@ function updateDots(id) {
   </div>
 
   <div class="room-panel active" style="margin-top:4px;">
-    <div class="room-slider">
-      <div class="room-slides" id="aileSlides">
-        <img class="room-slide-img" src="karasu-otel-suite-oda-aile-odası-deniz-manzarali.jpg" alt="Aile Odası 1">
-        <img class="room-slide-img" src="karasu-otel-suite-aile-odası-1-deniz-manzara-banyo.jpg" alt="Aile Odası 2">
-        <img class="room-slide-img" src="karasu-otel-suite-aile-odası.jpg" alt="Aile Odası 3">
-        <img class="room-slide-img" src="karasu-otel-standart-oda-deniz-manzara-balkon (1).jpg" alt="Aile Odası 4">
-        <img class="room-slide-img" src="karasu-otel-suite-aile-odası-2-deniz-manzara (1).jpg" alt="Aile Odası 5">
-      </div>
-      <button class="slider-btn slider-prev" onclick="slideRoom('aileSlides',-1)">&#8249;</button>
-      <button class="slider-btn slider-next" onclick="slideRoom('aileSlides',1)">&#8250;</button>
-      <div class="slider-dots" id="aileDots">
-        <span class="slider-dot active" onclick="goSlide('aileSlides',0)"></span>
-        <span class="slider-dot" onclick="goSlide('aileSlides',1)"></span>
-        <span class="slider-dot" onclick="goSlide('aileSlides',2)"></span>
-        <span class="slider-dot" onclick="goSlide('aileSlides',3)"></span>
-      </div>
-    </div>
+    <img class="room-img" src="https://images.unsplash.com/photo-1568495248636-6432b97bd949?w=900&q=80" alt="Aile Odası">
     <div class="room-info">
-      <div class="room-size">25 m²</div>
-      <div class="room-name">Deniz Manzaralı Aile Odası</div>
-      <div class="room-cap">👨‍👩‍👧‍👦 3 - 4</div>
+      <div class="room-size">35–45 m²</div>
+      <div class="room-name">Aile Odası</div>
+      <div class="room-cap">👨‍👩‍👧‍👦 2 Yetişkin + 2 Çocuk</div>
       <ul class="room-features">
         <li>Geniş yaşam alanı</li>
         <li>2 ayrı uyku bölümü</li>
-        <li>İsteğe Bağlı Açılır-Katlanır Yer Yatağı</li>
+        <li>Çocuk karyolası mevcut</li>
         <li>Deniz manzarası</li>
         <li>Klima & Isıtma</li>
         <li>Ücretsiz Wi-Fi</li>
-        <li>LCD TV</li>
-        <li>Mini Buzdolabı</li>
+        <li>Smart TV</li>
+        <li>Geniş banyo</li>
       </ul>
       <div class="room-btns">
         <a href="https://wa.me/905318992748?text=Aile%20Odası%20rezervasyonu%20hakkında%20bilgi%20almak%20istiyorum" target="_blank" class="btn-wa">
@@ -583,14 +510,11 @@ function updateDots(id) {
     <p class="section-desc">Denize sıfır konumumuzu ve odalarımızı keşfedin.</p>
   </div>
   <div class="gallery-grid">
-    <div class="gallery-item g1"><img src="karasu-otel-denize-sıfır-5.jpg" alt="Deniz"><div class="goverlay"></div></div>
-    <div class="gallery-item g2"><img src="karasu-otel-1.jpg" alt="Otel"><div class="goverlay"></div></div>
-    <div class="gallery-item g3"><img src="karasu-otel-denize-sıfır-1.jpg" alt="Oda"><div class="goverlay"></div></div>
-    <div class="gallery-item g4"><img src="karasu-otel-denize-sıfır-4.jpg" alt="Sahil"><div class="goverlay"></div></div>
-    <div class="gallery-item g5"><img src="karasu-otel-denize-sıfır-kahvaltı-6.jpg" alt="Otel"><div class="goverlay"></div></div>
-    <div class="gallery-item g5"><img src="karasu-otel-denize-sıfır-3.jpg" alt="Otel"><div class="goverlay"></div></div>
-    <div class="gallery-item g5"><img src="karasu-otel-denize-sıfır-2.jpg" alt="Otel"><div class="goverlay"></div></div>
-  
+    <div class="gallery-item g1"><img src="https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=700&q=80" alt="Deniz"><div class="goverlay"></div></div>
+    <div class="gallery-item g2"><img src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=700&q=80" alt="Otel"><div class="goverlay"></div></div>
+    <div class="gallery-item g3"><img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=700&q=80" alt="Oda"><div class="goverlay"></div></div>
+    <div class="gallery-item g4"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=700&q=80" alt="Sahil"><div class="goverlay"></div></div>
+    <div class="gallery-item g5"><img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=700&q=80" alt="Otel"><div class="goverlay"></div></div>
   </div>
 </section>
 
@@ -605,17 +529,17 @@ function updateDots(id) {
   <div class="geziler-grid">
     <div class="gezicard">
       <div class="gezicard-img-wrap">
-        <img class="gezicard-img" src="acarlar.jpg" alt="Acarlar Longozu">
+        <img class="gezicard-img" src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=800&q=80" alt="Acarlar Longozu">
       </div>
       <div class="gezicard-body">
-        <div class="gezicard-dist">🌿 Doğa · ~20 dk</div>
+        <div class="gezicard-dist">🌿 Doğa · ~15 dk</div>
         <div class="gezicard-name">Acarlar Longozu</div>
         <p class="gezicard-desc">Türkiye'nin sayılı longoz ormanlarından biri. Kano turları ve yürüyüş parkurlarıyla doğa severlerin gözdesi. Sazlık ve su bitkilerinin arasında pitoresk bir keşif sizi bekliyor.</p>
       </div>
     </div>
     <div class="gezicard">
       <div class="gezicard-img-wrap">
-        <img class="gezicard-img" src="maden.jpg" alt="Maden Deresi">
+        <img class="gezicard-img" src="https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?w=800&q=80" alt="Maden Deresi">
       </div>
       <div class="gezicard-body">
         <div class="gezicard-dist">💧 Doğa · ~20 dk</div>
@@ -625,20 +549,20 @@ function updateDots(id) {
     </div>
     <div class="gezicard">
       <div class="gezicard-img-wrap">
-        <img class="gezicard-img" src="poyrazlar.jpg" alt="Poyrazlar Gölü">
+        <img class="gezicard-img" src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80" alt="Poyrazlar Gölü">
       </div>
       <div class="gezicard-body">
-        <div class="gezicard-dist">🏕️ Piknik · ~50 dk</div>
+        <div class="gezicard-dist">🏕️ Piknik · ~25 dk</div>
         <div class="gezicard-name">Poyrazlar Gölü Piknik Alanı</div>
         <p class="gezicard-desc">Sakin göl manzarası ve geniş yeşil alanlarıyla aileler için huzurlu bir piknik cenneti. Mangal alanları ve çocuk oyun parkı mevcut.</p>
       </div>
     </div>
     <div class="gezicard">
       <div class="gezicard-img-wrap">
-        <img class="gezicard-img" src="ormanya.jpg" alt="Ormanya">
+        <img class="gezicard-img" src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&q=80" alt="Ormanya">
       </div>
       <div class="gezicard-body">
-        <div class="gezicard-dist">🌲 Orman Parkı · ~90 dk</div>
+        <div class="gezicard-dist">🌲 Orman Parkı · ~35 dk</div>
         <div class="gezicard-name">Ormanya</div>
         <p class="gezicard-desc">Kocaeli'nin dev doğa parkı Ormanya; bisiklet yolları, ip parkurları ve göl turu ile tüm yaşlara hitap eder. Günübirlik harika bir aile gezisi.</p>
       </div>
@@ -657,15 +581,15 @@ function updateDots(id) {
       <div class="contact-items">
         <div class="contact-item">
           <div class="contact-item-icon">📍</div>
-          <div class="contact-item-text"><strong>Adres</strong><span>Aziziye Mah. Doğu Karadeniz Cad. NO 164A Karasu, Sakarya<br>Denize Sıfır Konum</span></div>
+          <div class="contact-item-text"><strong>Adres</strong><span>Karasu, Sakarya, Türkiye<br>Denize Sıfır Konum</span></div>
         </div>
         <div class="contact-item">
           <div class="contact-item-icon">📞</div>
-          <div class="contact-item-text"><strong>Telefon</strong><a href="tel:+902647184705">+90 264 718 47 05</a></div>
+          <div class="contact-item-text"><strong>Telefon</strong><a href="tel:+902647184705">+90 5XX XXX XX XX</a></div>
         </div>
         <div class="contact-item">
           <div class="contact-item-icon">💬</div>
-          <div class="contact-item-text"><strong>WhatsApp</strong><a href="https://wa.me/905318992748" target="_blank">Mesaj Gönderin</a></div>
+          <div class="contact-item-text"><strong>WhatsApp</strong><a href="https://wa.me/905318992748" target="_blank">Mesaj gönderin, anında cevaplayalım</a></div>
         </div>
         <div class="contact-item">
           <div class="contact-item-icon">✉️</div>
@@ -687,7 +611,10 @@ function updateDots(id) {
         <div class="form-group"><label>Adınız</label><input type="text" id="fname" placeholder="Ad Soyad"></div>
         <div class="form-group"><label>Telefon</label><input type="tel" id="ftel" placeholder="+90 5XX XXX XX XX"></div>
       </div>
-     
+      <div class="form-row">
+        <div class="form-group"><label>Giriş Tarihi</label><input type="date" id="fgiris"></div>
+        <div class="form-group"><label>Çıkış Tarihi</label><input type="date" id="fcikis"></div>
+      </div>
       <div class="form-group"><label>Mesajınız</label><textarea id="fmesaj" placeholder="Oda tercihi, kişi sayısı ve sorularınızı yazın..."></textarea></div>
       <a href="#" onclick="return formWA()" class="btn-wa" style="width:100%;justify-content:center;display:flex;margin-top:4px;">
         <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
@@ -739,19 +666,7 @@ function updateDots(id) {
   </a>
 </div>
 
-<script>
-
-// Slider fonksiyonları head'de tanımlandı
-
-// Giriş tarihi seçilince çıkış tarihini otomatik ayarla
-document.getElementById('giris').addEventListener('change', function() {
-  const cikis = document.getElementById('cikis');
-  cikis.min = this.value;
-  if (!cikis.value || cikis.value <= this.value) {
-    cikis.value = this.value;
-  }
-});
-
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 60));
 
@@ -773,14 +688,16 @@ function closeMenu() {
 function whatsappRez() {
   const g = document.getElementById('giris').value;
   const c = document.getElementById('cikis').value;
+  const o = document.getElementById('odaTipi').value;
   const k = document.getElementById('kisi').value;
-  let url = 'https://tr.hotels.com/ho866336320/ozcan-pansiyon-karasu-turkiye/';
-  const params = new URLSearchParams();
-  if (g) params.set('chkin', g);
-  if (c) params.set('chkout', c);
-  params.set('rm1', 'a' + (k || '2'));
-  window.open(url + '?' + params.toString(), '_blank');
+  let msg = 'Merhaba, rezervasyon yapmak istiyorum.';
+  if (g) msg += '\nGiriş: ' + g;
+  if (c) msg += '\nÇıkış: ' + c;
+  if (o) msg += '\nOda: ' + o;
+  if (k) msg += '\nKişi: ' + k;
+  window.open('https://wa.me/905318992748?text=' + encodeURIComponent(msg), '_blank');
 }
+
 function formWA() {
   const ad = document.getElementById('fname').value || '';
   const tel = document.getElementById('ftel').value || '';
@@ -798,13 +715,4 @@ function formWA() {
 }
 
 const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; }});
-}, { threshold: 0.08 });
-document.querySelectorAll('.gezicard, .contact-item').forEach(el => {
-  el.style.opacity='0'; el.style.transform='translateY(28px)';
-  el.style.transition='opacity 0.55s ease, transform 0.55s ease';
-  observer.observe(el);
-});
-</script>
-</body>
-</html>
+  entries.forEach(e => { if 
