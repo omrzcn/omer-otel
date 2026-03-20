@@ -226,12 +226,13 @@ section { padding:96px 5%; }
 .gallery-track { display:flex; transition:transform 0.5s ease; }
 .gallery-track img { min-width:33.333%; height:320px; object-fit:cover; padding:2px; flex-shrink:0; }
 .gallery-nav { display:flex; gap:12px; justify-content:center; margin-top:20px; }
+.gallery-nav { display:flex; gap:12px; justify-content:center; margin-top:16px; }
 .gallery-nav button {
-  background:rgba(255,255,255,0.15); color:#fff; border:none;
-  width:44px; height:44px; font-size:1.4rem; cursor:pointer;
-  transition:background 0.2s;
+  background:var(--gold); color:#fff; border:none;
+  width:52px; height:52px; font-size:1.8rem; cursor:pointer;
+  transition:background 0.2s; border-radius:50%;
 }
-.gallery-nav button:hover { background:var(--gold); }
+.gallery-nav button:hover { background:var(--gold-light); }
 @media (max-width:920px) {
   .gallery-track img { min-width:85%; }
 }
