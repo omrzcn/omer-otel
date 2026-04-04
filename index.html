@@ -722,6 +722,23 @@ document.querySelectorAll('.gezicard, .contact-item').forEach(el => {
   el.style.opacity='0'; el.style.transform='translateY(28px)';
   el.style.transition='opacity 0.55s ease, transform 0.55s ease';
   observer.observe(el);
+
+  document.getElementById('giris').addEventListener('change', function() {
+  const girisTarihi = this.value;
+  const cikisInput = document.getElementById('cikis');
+
+  // çıkış tarihi minimum = giriş tarihi + 1 gün
+  const date = new Date(girisTarihi);
+  date.setDate(date.getDate() + 1);
+
+  const minCikis = date.toISOString().split('T')[0];
+  cikisInput.min = minCikis;
+
+  // eğer kullanıcı eski bir tarih seçtiyse sıfırla
+  if (cikisInput.value && cikisInput.value <= girisTarihi) {
+    cikisInput.value = '';
+  }
+});
 });
 </script>
 </body>
