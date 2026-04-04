@@ -745,6 +745,10 @@ function formatDateLocal(date) {
   return `${year}-${month}-${day}`;
 }
 
+function getTodayStr() {
+  return formatDateLocal(new Date());
+}
+
 function getNextDay(dateString) {
   const [year, month, day] = dateString.split('-').map(Number);
   const d = new Date(year, month - 1, day);
@@ -753,10 +757,17 @@ function getNextDay(dateString) {
 }
 
 function setDateRules() {
-  const todayStr = formatDateLocal(new Date());
+  const todayStr = getTodayStr();
 
+  // giriş bugünden önce olamasın
   girisInput.min = todayStr;
 
+  // eğer girişte eski tarih varsa temizle
+  if (girisInput.value && girisInput.value < todayStr) {
+    girisInput.value = '';
+  }
+
+  // giriş boşsa çıkışı da sıfırla
   if (!girisInput.value) {
     cikisInput.min = todayStr;
     cikisInput.value = '';
@@ -766,23 +777,45 @@ function setDateRules() {
   const minCikis = getNextDay(girisInput.value);
   cikisInput.min = minCikis;
 
+  // çıkış girişten önceyse veya aynı günse düzelt
   if (!cikisInput.value || cikisInput.value < minCikis) {
     cikisInput.value = minCikis;
   }
 }
 
-girisInput.addEventListener('change', setDateRules);
+// giriş değişince kontrol et
+girisInput.addEventListener('change', function () {
+  const todayStr = getTodayStr();
 
+  if (girisInput.value && girisInput.value < todayStr) {
+    alert('Giriş tarihi bugünden önce olamaz.');
+    girisInput.value = '';
+    cikisInput.value = '';
+    cikisInput.min = todayStr;
+    return;
+  }
+
+  setDateRules();
+});
+
+// çıkış değişince kontrol et
 cikisInput.addEventListener('change', function () {
-  if (!girisInput.value) return;
+  if (!girisInput.value) {
+    alert('Lütfen önce giriş tarihini seçin.');
+    cikisInput.value = '';
+    return;
+  }
 
   const minCikis = getNextDay(girisInput.value);
+
   if (cikisInput.value < minCikis) {
     alert('Çıkış tarihi, giriş tarihinden en az 1 gün sonra olmalıdır.');
     cikisInput.value = minCikis;
   }
 });
 
+// sayfa açılır açılmaz çalışsın
+window.addEventListener('pageshow', setDateRules);
 window.addEventListener('load', setDateRules);
 </script>
 </body>
