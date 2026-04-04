@@ -357,6 +357,9 @@ footer { background:var(--dark); padding:56px 5% 28px; }
   .float-btn { width:48px; height:48px; }
 }
 </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/tr.js"></script>
 </head>
 <body>
 
@@ -413,11 +416,11 @@ footer { background:var(--dark); padding:56px 5% 28px; }
 <div id="rezervasyon-bar">
   <div class="rez-field">
     <label>Giriş Tarihi</label>
-    <input type="date" id="giris">
+    <input type="text" id="giris" placeholder="Giriş tarihi" readonly>
   </div>
   <div class="rez-field">
     <label>Çıkış Tarihi</label>
-    <input type="date" id="cikis">
+    <input type="text" id="cikis" placeholder="Çıkış tarihi" readonly>
   </div>
   <div class="rez-field">
     <label>Oda Tipi</label>
@@ -737,129 +740,60 @@ document.querySelectorAll('.gezicard, .contact-item').forEach(el => {
   observer.observe(el);
 });
 
-/* TARİH KURALLARI - SERT KONTROL */
-const girisInput = document.getElementById('giris');
-const cikisInput = document.getElementById('cikis');
+/* FLATPICKR */
+let girisPicker;
+let cikisPicker;
 
-function formatDateLocal(date) {
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, '0');
-  const day = String(date.getDate()).padStart(2, '0');
-  return `${year}-${month}-${day}`;
-}
+girisPicker = flatpickr("#giris", {
+  locale: "tr",
+  dateFormat: "Y-m-d",
+  minDate: "today",
+  disableMobile: true,
 
-function parseInputDate(value) {
-  if (!value) return null;
-  const [year, month, day] = value.split('-').map(Number);
-  if (!year || !month || !day) return null;
-  return new Date(year, month - 1, day);
-}
+  onChange: function(selectedDates) {
+    if (!selectedDates.length) return;
 
-function getTodayStr() {
-  return formatDateLocal(new Date());
-}
+    const nextDay = new Date(selectedDates[0]);
+    nextDay.setDate(nextDay.getDate() + 1);
 
-function getTomorrowStrFrom(dateStr) {
-  const d = parseInputDate(dateStr);
-  if (!d) return '';
-  d.setDate(d.getDate() + 1);
-  return formatDateLocal(d);
-}
+    cikisPicker.set("minDate", nextDay);
 
-function clearInvalidDatesSilently() {
-  const todayStr = getTodayStr();
-
-  // giriş bugünden önce olamaz
-  girisInput.min = todayStr;
-
-  if (girisInput.value && girisInput.value < todayStr) {
-    girisInput.value = '';
-  }
-
-  // giriş yoksa çıkışı sıfırla
-  if (!girisInput.value) {
-    cikisInput.min = todayStr;
-    cikisInput.value = '';
-    return;
-  }
-
-  // çıkış girişten en az 1 gün sonrası olsun
-  const minCikis = getTomorrowStrFrom(girisInput.value);
-  cikisInput.min = minCikis;
-
-  if (cikisInput.value && cikisInput.value < minCikis) {
-    cikisInput.value = '';
-  }
-}
-
-function validateDates(showAlert = true) {
-  const todayStr = getTodayStr();
-
-  if (!girisInput.value) {
-    if (showAlert) {
-      alert('Lütfen giriş tarihini seçin.');
-      girisInput.focus();
+    const current = cikisPicker.selectedDates[0];
+    if (!current || current <= selectedDates[0]) {
+      cikisPicker.setDate(nextDay, true);
     }
+  }
+});
+
+cikisPicker = flatpickr("#cikis", {
+  locale: "tr",
+  dateFormat: "Y-m-d",
+  minDate: new Date().fp_incr(1),
+  disableMobile: true
+});
+
+/* VALIDATION */
+function validateDates() {
+  const g = document.getElementById("giris").value;
+  const c = document.getElementById("cikis").value;
+
+  if (!g) {
+    alert("Giriş tarihi seç");
     return false;
   }
 
-  if (girisInput.value < todayStr) {
-    if (showAlert) {
-      alert('Giriş tarihi bugünden önce olamaz.');
-      girisInput.focus();
-    }
-    girisInput.value = '';
-    cikisInput.value = '';
-    clearInvalidDatesSilently();
+  if (!c) {
+    alert("Çıkış tarihi seç");
     return false;
   }
 
-  const minCikis = getTomorrowStrFrom(girisInput.value);
-  cikisInput.min = minCikis;
-
-  if (!cikisInput.value) {
-    if (showAlert) {
-      alert('Lütfen çıkış tarihini seçin.');
-      cikisInput.focus();
-    }
-    return false;
-  }
-
-  if (cikisInput.value < minCikis) {
-    if (showAlert) {
-      alert('Çıkış tarihi, giriş tarihinden en az 1 gün sonra olmalıdır.');
-      cikisInput.focus();
-    }
-    cikisInput.value = '';
+  if (c <= g) {
+    alert("Çıkış girişten sonra olmalı");
     return false;
   }
 
   return true;
 }
-
-/* Sayfa açılır açılmaz temizle */
-window.addEventListener('load', clearInvalidDatesSilently);
-window.addEventListener('pageshow', clearInvalidDatesSilently);
-
-/* Giriş tarihi değişince çıkışı yeniden zorla */
-girisInput.addEventListener('input', clearInvalidDatesSilently);
-girisInput.addEventListener('change', clearInvalidDatesSilently);
-girisInput.addEventListener('blur', clearInvalidDatesSilently);
-
-/* Çıkış tarihi değişince doğrula */
-cikisInput.addEventListener('input', function () {
-  if (!girisInput.value) return;
-  const minCikis = getTomorrowStrFrom(girisInput.value);
-  cikisInput.min = minCikis;
-});
-
-cikisInput.addEventListener('change', function () {
-  validateDates(true);
-});
-
-cikisInput.addEventListener('blur', function () {
-  validateDates(false);
-});
 </script>
 </body>
 </html>
