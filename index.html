@@ -733,30 +733,46 @@ function formatDateLocal(date) {
   return `${year}-${month}-${day}`;
 }
 
-function setDateRules() {
-  const today = new Date();
-  const todayStr = formatDateLocal(today);
+function getNextDay(dateString) {
+  const [year, month, day] = dateString.split('-').map(Number);
+  const d = new Date(year, month - 1, day);
+  d.setDate(d.getDate() + 1);
+  return formatDateLocal(d);
+}
 
-  // giriş bugünden önce seçilemesin
+function setDateRules() {
+  const todayStr = formatDateLocal(new Date());
   girisInput.min = todayStr;
 
   if (girisInput.value) {
-    const [year, month, day] = girisInput.value.split('-').map(Number);
-    const nextDay = new Date(year, month - 1, day);
-    nextDay.setDate(nextDay.getDate() + 1);
-
-    const minCikis = formatDateLocal(nextDay);
+    const minCikis = getNextDay(girisInput.value);
     cikisInput.min = minCikis;
 
-    if (cikisInput.value && cikisInput.value < minCikis) {
-      cikisInput.value = '';
+    // Çıkış tarihi boşsa otomatik ertesi gün gelsin
+    if (!cikisInput.value || cikisInput.value < minCikis) {
+      cikisInput.value = minCikis;
     }
   } else {
     cikisInput.min = todayStr;
+    cikisInput.value = '';
   }
 }
 
+// Giriş değişince kuralları uygula
 girisInput.addEventListener('change', setDateRules);
+
+// Çıkış tarihi elle yanlış seçilirse geri düzelt
+cikisInput.addEventListener('change', function () {
+  if (girisInput.value) {
+    const minCikis = getNextDay(girisInput.value);
+    if (cikisInput.value < minCikis) {
+      alert('Çıkış tarihi, giriş tarihinden en az 1 gün sonra olmalıdır.');
+      cikisInput.value = minCikis;
+    }
+  }
+});
+
+// Sayfa açılınca da çalışsın
 window.addEventListener('load', setDateRules);
 </script>
 </body>
