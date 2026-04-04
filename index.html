@@ -743,6 +743,17 @@ document.getElementById('giris').addEventListener('change', function() {
   cikis.setAttribute('min', ertesi);
   cikis.value = ertesi;
 });
+
+cikis.addEventListener('change', function() {
+  if (this.value <= giris.value) {
+    var g = new Date(giris.value);
+    g.setDate(g.getDate() + 1);
+    var ey = g.getFullYear();
+    var ea = String(g.getMonth() + 1).padStart(2, '0');
+    var eg = String(g.getDate()).padStart(2, '0');
+    this.value = ey + '-' + ea + '-' + eg;
+  }
+});
 })();
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 60));
