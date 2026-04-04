@@ -387,7 +387,7 @@ footer { background:var(--dark); padding:56px 5% 28px; }
 
 <!-- NAV -->
 <nav id="navbar">
-  <a href="#" class="logo-img-wrap"><img src="appleLogo.jpg" class="nav-logo" alt="Özcan Otel"></a>
+  <a href="#" class="logo-img-wrap"><img src="appleLogo1.jpg" class="nav-logo" alt="Özcan Otel"></a>
   <ul class="nav-links">
     <li><a href="#odalar">Odalar</a></li>
     <li><a href="#galeri">Galeri</a></li>
@@ -423,7 +423,7 @@ footer { background:var(--dark); padding:56px 5% 28px; }
   <div class="hero-content">
     <div class="hero-tagline">Karasu · Sakarya · Denize Sıfır</div>
     <h1 class="hero-title">Özcan <em>Otel</em></h1>
-    <span class="hero-wave">🌊</span>
+    
     <p class="hero-sub">Denizin Huzuru, Konforun Adresi</p>
     <div class="hero-btns">
       <a href="#rezervasyon-bar" class="btn-primary">Rezervasyon Yap</a>
@@ -510,6 +510,7 @@ footer { background:var(--dark); padding:56px 5% 28px; }
     <img class="room-slide-img" src="karasu-otel-standart-oda-2.jpg" alt="Standart Oda 1">
     <img class="room-slide-img" src="karasu-otel-standart-oda-1.jpg" alt="Standart Oda 2">
     <img class="room-slide-img" src="karasu-otel-standart-oda-3-deniz-manzarali.jpg" alt="Standart Oda 3">
+    <img class="room-slide-img" src="karasu-otel-suite-aile-odası-1-deniz-manzara-banyo.jpg" alt="Standart Oda 4">
   </div>
   <button class="slider-btn slider-prev" onclick="slideRoom('standartSlides',-1)">&#8249;</button>
   <button class="slider-btn slider-next" onclick="slideRoom('standartSlides',1)">&#8250;</button>
@@ -520,18 +521,18 @@ footer { background:var(--dark); padding:56px 5% 28px; }
   </div>
 </div>
     <div class="room-info">
-      <div class="room-size">20–25 m²</div>
+      <div class="room-size">18 m²</div>
       <div class="room-name">Standart Oda</div>
       <div class="room-cap">👤 1–2 Yetişkin</div>
       <ul class="room-features">
         <li>Çift veya iki tek yatak</li>
         <li>Deniz / bahçe manzarası</li>
-        <li>Klima & Isıtma</li>
+        <li>Klima</li>
         <li>Ücretsiz Wi-Fi</li>
         <li>LCD TV</li>
-        <li>Minibar</li>
+        <li>Mini Buzdolabı</li>
         <li>Saç kurutma makinesi</li>
-        <li>Güvenli kasa</li>
+        <li>Banyo</li>
       </ul>
       <div class="room-btns">
         <a href="https://wa.me/905318992748?text=Standart%20Oda%20rezervasyonu%20hakkında%20bilgi%20almak%20istiyorum" target="_blank" class="btn-wa">
@@ -544,20 +545,36 @@ footer { background:var(--dark); padding:56px 5% 28px; }
   </div>
 
   <div class="room-panel active" style="margin-top:4px;">
-    <img class="room-img" src="https://images.unsplash.com/photo-1568495248636-6432b97bd949?w=900&q=80" alt="Aile Odası">
+    <div class="room-slider">
+  <div class="room-slides" id="aileSlides">
+    <img class="room-slide-img" src="karasu-otel-suite-oda-aile-odası-deniz-manzarali.jpg" alt="Aile Odası 1">
+    <img class="room-slide-img" src="karasu-otel-suite-aile-odası.jpg" alt="Aile Odası 2">
+    <img class="room-slide-img" src="karasu-otel-suite-aile-odası-1-deniz-manzara-banyo.jpg" alt="Aile Odası 3">
+    <img class="room-slide-img" src="karasu-otel-suite-aile-odası-2-deniz-manzara (1).jpg" alt="Aile Odası 4">
+    <img class="room-slide-img" src="karasu-otel-standart-oda-deniz-manzara-balkon (1).jpg" alt="Aile Odası 5">
+  </div>
+  <button class="slider-btn slider-prev" onclick="slideRoom('aileSlides',-1)">&#8249;</button>
+  <button class="slider-btn slider-next" onclick="slideRoom('aileSlides',1)">&#8250;</button>
+  <div class="slider-dots" id="aileDots">
+    <span class="slider-dot active" onclick="goSlide('aileSlides',0)"></span>
+    <span class="slider-dot" onclick="goSlide('aileSlides',1)"></span>
+    <span class="slider-dot" onclick="goSlide('aileSlides',2)"></span>
+    <span class="slider-dot" onclick="goSlide('aileSlides',3)"></span>
+  </div>
+</div>
     <div class="room-info">
-      <div class="room-size">35–45 m²</div>
-      <div class="room-name">Aile Odası</div>
-      <div class="room-cap">👨‍👩‍👧‍👦 2 Yetişkin + 2 Çocuk</div>
+      <div class="room-size">25 m²</div>
+      <div class="room-name">Deniz Manzaralı Aile Odası</div>
+      <div class="room-cap">👨‍👩‍👧‍👦 2-3 Yetişkin + 1 Çocuk</div>
       <ul class="room-features">
-        <li>Geniş yaşam alanı</li>
         <li>2 ayrı uyku bölümü</li>
-        <li>Çocuk karyolası mevcut</li>
+        <li>Saç Kurutma Makinesi</li>
+        <li>İsteğe bağlı açılır katlanır yer yatağı</li>
         <li>Deniz manzarası</li>
-        <li>Klima & Isıtma</li>
+        <li>Klima</li>
         <li>Ücretsiz Wi-Fi</li>
-        <li>Smart TV</li>
-        <li>Geniş banyo</li>
+        <li>LCD TV</li>
+        <li>Banyo</li>
       </ul>
       <div class="room-btns">
         <a href="https://wa.me/905318992748?text=Aile%20Odası%20rezervasyonu%20hakkında%20bilgi%20almak%20istiyorum" target="_blank" class="btn-wa">
