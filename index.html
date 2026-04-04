@@ -734,7 +734,7 @@ document.querySelectorAll('.gezicard, .contact-item').forEach(el => {
   observer.observe(el);
 });
 
-/* TARİH KURALLARI */
+/* TARİH KURALLARI - SERT KONTROL */
 const girisInput = document.getElementById('giris');
 const cikisInput = document.getElementById('cikis');
 
@@ -745,78 +745,118 @@ function formatDateLocal(date) {
   return `${year}-${month}-${day}`;
 }
 
+function parseInputDate(value) {
+  if (!value) return null;
+  const [year, month, day] = value.split('-').map(Number);
+  if (!year || !month || !day) return null;
+  return new Date(year, month - 1, day);
+}
+
 function getTodayStr() {
   return formatDateLocal(new Date());
 }
 
-function getNextDay(dateString) {
-  const [year, month, day] = dateString.split('-').map(Number);
-  const d = new Date(year, month - 1, day);
+function getTomorrowStrFrom(dateStr) {
+  const d = parseInputDate(dateStr);
+  if (!d) return '';
   d.setDate(d.getDate() + 1);
   return formatDateLocal(d);
 }
 
-function setDateRules() {
+function clearInvalidDatesSilently() {
   const todayStr = getTodayStr();
 
-  // giriş bugünden önce olamasın
+  // giriş bugünden önce olamaz
   girisInput.min = todayStr;
 
-  // eğer girişte eski tarih varsa temizle
   if (girisInput.value && girisInput.value < todayStr) {
     girisInput.value = '';
   }
 
-  // giriş boşsa çıkışı da sıfırla
+  // giriş yoksa çıkışı sıfırla
   if (!girisInput.value) {
     cikisInput.min = todayStr;
     cikisInput.value = '';
     return;
   }
 
-  const minCikis = getNextDay(girisInput.value);
+  // çıkış girişten en az 1 gün sonrası olsun
+  const minCikis = getTomorrowStrFrom(girisInput.value);
   cikisInput.min = minCikis;
 
-  // çıkış girişten önceyse veya aynı günse düzelt
-  if (!cikisInput.value || cikisInput.value < minCikis) {
-    cikisInput.value = minCikis;
+  if (cikisInput.value && cikisInput.value < minCikis) {
+    cikisInput.value = '';
   }
 }
 
-// giriş değişince kontrol et
-girisInput.addEventListener('change', function () {
+function validateDates(showAlert = true) {
   const todayStr = getTodayStr();
 
-  if (girisInput.value && girisInput.value < todayStr) {
-    alert('Giriş tarihi bugünden önce olamaz.');
+  if (!girisInput.value) {
+    if (showAlert) {
+      alert('Lütfen giriş tarihini seçin.');
+      girisInput.focus();
+    }
+    return false;
+  }
+
+  if (girisInput.value < todayStr) {
+    if (showAlert) {
+      alert('Giriş tarihi bugünden önce olamaz.');
+      girisInput.focus();
+    }
     girisInput.value = '';
     cikisInput.value = '';
-    cikisInput.min = todayStr;
-    return;
+    clearInvalidDatesSilently();
+    return false;
   }
 
-  setDateRules();
-});
+  const minCikis = getTomorrowStrFrom(girisInput.value);
+  cikisInput.min = minCikis;
 
-// çıkış değişince kontrol et
-cikisInput.addEventListener('change', function () {
-  if (!girisInput.value) {
-    alert('Lütfen önce giriş tarihini seçin.');
-    cikisInput.value = '';
-    return;
+  if (!cikisInput.value) {
+    if (showAlert) {
+      alert('Lütfen çıkış tarihini seçin.');
+      cikisInput.focus();
+    }
+    return false;
   }
-
-  const minCikis = getNextDay(girisInput.value);
 
   if (cikisInput.value < minCikis) {
-    alert('Çıkış tarihi, giriş tarihinden en az 1 gün sonra olmalıdır.');
-    cikisInput.value = minCikis;
+    if (showAlert) {
+      alert('Çıkış tarihi, giriş tarihinden en az 1 gün sonra olmalıdır.');
+      cikisInput.focus();
+    }
+    cikisInput.value = '';
+    return false;
   }
+
+  return true;
+}
+
+/* Sayfa açılır açılmaz temizle */
+window.addEventListener('load', clearInvalidDatesSilently);
+window.addEventListener('pageshow', clearInvalidDatesSilently);
+
+/* Giriş tarihi değişince çıkışı yeniden zorla */
+girisInput.addEventListener('input', clearInvalidDatesSilently);
+girisInput.addEventListener('change', clearInvalidDatesSilently);
+girisInput.addEventListener('blur', clearInvalidDatesSilently);
+
+/* Çıkış tarihi değişince doğrula */
+cikisInput.addEventListener('input', function () {
+  if (!girisInput.value) return;
+  const minCikis = getTomorrowStrFrom(girisInput.value);
+  cikisInput.min = minCikis;
 });
 
-// sayfa açılır açılmaz çalışsın
-window.addEventListener('pageshow', setDateRules);
-window.addEventListener('load', setDateRules);
+cikisInput.addEventListener('change', function () {
+  validateDates(true);
+});
+
+cikisInput.addEventListener('blur', function () {
+  validateDates(false);
+});
 </script>
 </body>
 </html>
