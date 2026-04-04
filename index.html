@@ -672,30 +672,31 @@ const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 60));
 
 function toggleMenu() {
-  const m = document.getElementById('mobileMenu'), h = document.getElementById('hamburger');
+  const m = document.getElementById('mobileMenu');
+  const h = document.getElementById('hamburger');
   const o = m.classList.toggle('open');
   h.classList.toggle('open', o);
   document.body.style.overflow = o ? 'hidden' : '';
 }
+
 function closeMenu() {
   document.getElementById('mobileMenu').classList.remove('open');
   document.getElementById('hamburger').classList.remove('open');
   document.body.style.overflow = '';
 }
 
-
-
-
 function whatsappRez() {
   const g = document.getElementById('giris').value;
   const c = document.getElementById('cikis').value;
   const o = document.getElementById('odaTipi').value;
   const k = document.getElementById('kisi').value;
+
   let msg = 'Merhaba, rezervasyon yapmak istiyorum.';
   if (g) msg += '\nGiriş: ' + g;
   if (c) msg += '\nÇıkış: ' + c;
   if (o) msg += '\nOda: ' + o;
   if (k) msg += '\nKişi: ' + k;
+
   window.open('https://wa.me/905318992748?text=' + encodeURIComponent(msg), '_blank');
 }
 
@@ -705,25 +706,36 @@ function formWA() {
   const g = document.getElementById('fgiris').value || '';
   const c = document.getElementById('fcikis').value || '';
   const m = document.getElementById('fmesaj').value || '';
+
   let msg = 'Merhaba, Özcan Otel hakkında bilgi almak istiyorum.';
   if (ad) msg += '\nAd: ' + ad;
   if (tel) msg += '\nTelefon: ' + tel;
   if (g) msg += '\nGiriş: ' + g;
   if (c) msg += '\nÇıkış: ' + c;
   if (m) msg += '\nNot: ' + m;
+
   window.open('https://wa.me/905318992748?text=' + encodeURIComponent(msg), '_blank');
   return false;
 }
 
 const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; }});
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'translateY(0)';
+    }
+  });
 }, { threshold: 0.08 });
-document.querySelectorAll('.gezicard, .contact-item').forEach(el => {
-  el.style.opacity='0'; el.style.transform='translateY(28px)';
-  el.style.transition='opacity 0.55s ease, transform 0.55s ease';
-  observer.observe(el);
 
-  const girisInput = document.getElementById('giris');
+document.querySelectorAll('.gezicard, .contact-item').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(28px)';
+  el.style.transition = 'opacity 0.55s ease, transform 0.55s ease';
+  observer.observe(el);
+});
+
+/* TARİH KURALLARI */
+const girisInput = document.getElementById('giris');
 const cikisInput = document.getElementById('cikis');
 
 function formatDateLocal(date) {
@@ -742,37 +754,35 @@ function getNextDay(dateString) {
 
 function setDateRules() {
   const todayStr = formatDateLocal(new Date());
+
   girisInput.min = todayStr;
 
-  if (girisInput.value) {
-    const minCikis = getNextDay(girisInput.value);
-    cikisInput.min = minCikis;
-
-    // Çıkış tarihi boşsa otomatik ertesi gün gelsin
-    if (!cikisInput.value || cikisInput.value < minCikis) {
-      cikisInput.value = minCikis;
-    }
-  } else {
+  if (!girisInput.value) {
     cikisInput.min = todayStr;
     cikisInput.value = '';
+    return;
+  }
+
+  const minCikis = getNextDay(girisInput.value);
+  cikisInput.min = minCikis;
+
+  if (!cikisInput.value || cikisInput.value < minCikis) {
+    cikisInput.value = minCikis;
   }
 }
 
-// Giriş değişince kuralları uygula
 girisInput.addEventListener('change', setDateRules);
 
-// Çıkış tarihi elle yanlış seçilirse geri düzelt
 cikisInput.addEventListener('change', function () {
-  if (girisInput.value) {
-    const minCikis = getNextDay(girisInput.value);
-    if (cikisInput.value < minCikis) {
-      alert('Çıkış tarihi, giriş tarihinden en az 1 gün sonra olmalıdır.');
-      cikisInput.value = minCikis;
-    }
+  if (!girisInput.value) return;
+
+  const minCikis = getNextDay(girisInput.value);
+  if (cikisInput.value < minCikis) {
+    alert('Çıkış tarihi, giriş tarihinden en az 1 gün sonra olmalıdır.');
+    cikisInput.value = minCikis;
   }
 });
 
-// Sayfa açılınca da çalışsın
 window.addEventListener('load', setDateRules);
 </script>
 </body>
