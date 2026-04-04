@@ -710,15 +710,7 @@ footer { background:var(--dark); padding:56px 5% 28px; }
 document.getElementById('giris').min = bugun;
 document.getElementById('cikis').min = bugun;
 
-document.getElementById('giris').addEventListener('change', function() {
-  const cikis = document.getElementById('cikis');
-  const ertesi = new Date(this.value);
-  ertesi.setDate(ertesi.getDate() + 1);
-  const minCikis = ertesi.toISOString().split('T')[0];
-  cikis.min = minCikis;
-  if (!cikis.value || cikis.value <= this.value) {
-    cikis.value = minCikis;
-  }
+
 });></script><script>
   (function() {
   var d = new Date();
