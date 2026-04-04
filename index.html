@@ -416,7 +416,7 @@ footer { background:var(--dark); padding:56px 5% 28px; }
 <div id="rezervasyon-bar">
   <div class="rez-field">
     <label>Giriş Tarihi</label>
-    <input type="date" id="giris">
+    <input type="date" id="giris" min="2026-04-04">
   </div>
   <div class="rez-field">
     <label>Çıkış Tarihi</label>
@@ -720,6 +720,32 @@ document.getElementById('giris').addEventListener('change', function() {
     cikis.value = minCikis;
   }
 });></script><script>
+  (function() {
+  var d = new Date();
+  var yil = d.getFullYear();
+  var ay = String(d.getMonth() + 1).padStart(2, '0');
+  var gun = String(d.getDate()).padStart(2, '0');
+  var bugun = yil + '-' + ay + '-' + gun;
+  
+  var giris = document.getElementById('giris');
+  var cikis = document.getElementById('cikis');
+  
+  giris.setAttribute('min', bugun);
+  cikis.setAttribute('min', bugun);
+  
+  giris.addEventListener('change', function() {
+    var g = new Date(this.value);
+    g.setDate(g.getDate() + 1);
+    var ey = g.getFullYear();
+    var ea = String(g.getMonth() + 1).padStart(2, '0');
+    var eg = String(g.getDate()).padStart(2, '0');
+    var ertesi = ey + '-' + ea + '-' + eg;
+    cikis.setAttribute('min', ertesi);
+    if (!cikis.value || cikis.value <= this.value) {
+      cikis.value = ertesi;
+    }
+  });
+})();
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 60));
 
