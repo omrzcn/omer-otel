@@ -723,22 +723,41 @@ document.querySelectorAll('.gezicard, .contact-item').forEach(el => {
   el.style.transition='opacity 0.55s ease, transform 0.55s ease';
   observer.observe(el);
 
-  document.getElementById('giris').addEventListener('change', function() {
-  const girisTarihi = this.value;
-  const cikisInput = document.getElementById('cikis');
+  const girisInput = document.getElementById('giris');
+const cikisInput = document.getElementById('cikis');
 
-  // çıkış tarihi minimum = giriş tarihi + 1 gün
-  const date = new Date(girisTarihi);
-  date.setDate(date.getDate() + 1);
+function formatDateLocal(date) {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+}
 
-  const minCikis = date.toISOString().split('T')[0];
-  cikisInput.min = minCikis;
+function setDateRules() {
+  const today = new Date();
+  const todayStr = formatDateLocal(today);
 
-  // eğer kullanıcı eski bir tarih seçtiyse sıfırla
-  if (cikisInput.value && cikisInput.value <= girisTarihi) {
-    cikisInput.value = '';
+  // giriş bugünden önce seçilemesin
+  girisInput.min = todayStr;
+
+  if (girisInput.value) {
+    const [year, month, day] = girisInput.value.split('-').map(Number);
+    const nextDay = new Date(year, month - 1, day);
+    nextDay.setDate(nextDay.getDate() + 1);
+
+    const minCikis = formatDateLocal(nextDay);
+    cikisInput.min = minCikis;
+
+    if (cikisInput.value && cikisInput.value < minCikis) {
+      cikisInput.value = '';
+    }
+  } else {
+    cikisInput.min = todayStr;
   }
-});
+}
+
+girisInput.addEventListener('change', setDateRules);
+window.addEventListener('load', setDateRules);
 </script>
 </body>
 </html>
