@@ -732,6 +732,14 @@ document.getElementById('giris').addEventListener('change', function() {
   
   giris.setAttribute('min', bugun);
   cikis.setAttribute('min', bugun);
+    giris.value = bugun;
+var yarin = new Date();
+yarin.setDate(yarin.getDate() + 1);
+var yy = yarin.getFullYear();
+var ya = String(yarin.getMonth() + 1).padStart(2, '0');
+var yg = String(yarin.getDate()).padStart(2, '0');
+cikis.value = yy + '-' + ya + '-' + yg;
+cikis.setAttribute('min', yy + '-' + ya + '-' + yg);
   
  giris.addEventListener('change', function() {
   var g = new Date(this.value);
