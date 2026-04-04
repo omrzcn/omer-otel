@@ -734,17 +734,15 @@ document.getElementById('giris').addEventListener('change', function() {
   cikis.setAttribute('min', bugun);
   
   giris.addEventListener('change', function() {
-    var g = new Date(this.value);
-    g.setDate(g.getDate() + 1);
-    var ey = g.getFullYear();
-    var ea = String(g.getMonth() + 1).padStart(2, '0');
-    var eg = String(g.getDate()).padStart(2, '0');
-    var ertesi = ey + '-' + ea + '-' + eg;
-    cikis.setAttribute('min', ertesi);
-    if (!cikis.value || cikis.value <= this.value) {
-      cikis.value = ertesi;
-    }
-  });
+  var g = new Date(this.value);
+  g.setDate(g.getDate() + 1);
+  var ey = g.getFullYear();
+  var ea = String(g.getMonth() + 1).padStart(2, '0');
+  var eg = String(g.getDate()).padStart(2, '0');
+  var ertesi = ey + '-' + ea + '-' + eg;
+  cikis.setAttribute('min', ertesi);
+  cikis.value = ertesi;
+});
 })();
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 60));
