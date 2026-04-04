@@ -733,7 +733,7 @@ document.getElementById('giris').addEventListener('change', function() {
   giris.setAttribute('min', bugun);
   cikis.setAttribute('min', bugun);
   
-  giris.addEventListener('change', function() {
+ giris.addEventListener('change', function() {
   var g = new Date(this.value);
   g.setDate(g.getDate() + 1);
   var ey = g.getFullYear();
@@ -754,6 +754,8 @@ cikis.addEventListener('change', function() {
     this.value = ey + '-' + ea + '-' + eg;
   }
 });
+
+
 })();
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 60));
