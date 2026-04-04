@@ -686,6 +686,8 @@ function closeMenu() {
 }
 
 function whatsappRez() {
+  if (!validateDates(true)) return;
+
   const g = document.getElementById('giris').value;
   const c = document.getElementById('cikis').value;
   const o = document.getElementById('odaTipi').value;
@@ -698,6 +700,7 @@ function whatsappRez() {
   if (k) msg += '\nKişi: ' + k;
 
   window.open('https://wa.me/905318992748?text=' + encodeURIComponent(msg), '_blank');
+
 }
 
 function formWA() {
