@@ -1055,7 +1055,16 @@ function updateDots(id) {
 }
   function scrollGallery(dir) {
   const grid = document.getElementById('galleryGrid');
-  grid.scrollBy({ left: dir * (window.innerWidth * 0.85 + 8), behavior: 'smooth' });
+  const itemWidth = grid.firstElementChild.offsetWidth + 8;
+  const maxScroll = grid.scrollWidth - grid.clientWidth;
+  
+  if (dir > 0 && grid.scrollLeft >= maxScroll - 10) {
+    grid.scrollTo({ left: 0, behavior: 'smooth' });
+  } else if (dir < 0 && grid.scrollLeft <= 10) {
+    grid.scrollTo({ left: maxScroll, behavior: 'smooth' });
+  } else {
+    grid.scrollBy({ left: dir * itemWidth, behavior: 'smooth' });
+  }
 }
 </script>
 </body>
