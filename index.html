@@ -439,6 +439,27 @@ footer { background:var(--dark); padding:56px 5% 28px; }
 #hakkimizda > div > div { grid-template-columns:1fr 1fr !important; }
   .contact-btns { flex-direction:column; }
   .contact-btns .btn-wa, .contact-btns .btn-ara { justify-content:center; }
+  .gallery-prev, .gallery-next {
+  display:none;
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  background:rgba(0,0,0,0.5);
+  color:#fff;
+  border:none;
+  width:44px;
+  height:44px;
+  font-size:1.6rem;
+  cursor:pointer;
+  z-index:10;
+  align-items:center;
+  justify-content:center;
+}
+.gallery-prev { left:8px; }
+.gallery-next { right:8px; }
+@media (max-width:920px) {
+  .gallery-prev, .gallery-next { display:flex; }
+}
 }
 @media (max-width:480px) {
   .gallery-grid { grid-template-columns:1fr; grid-template-rows:auto; }
@@ -724,13 +745,17 @@ footer { background:var(--dark); padding:56px 5% 28px; }
     </div>
     <p class="section-desc">Denize sıfır konumumuzu ve odalarımızı keşfedin.</p>
   </div>
-  <div class="gallery-grid">
-    <div class="gallery-item g1"><img src="karasu-otel-denize-sıfır-5.jpg" alt="Karasu denize sıfır otel giris"><div class="goverlay"></div></div>
-    <div class="gallery-item g2"><img src="karasu-otel-denize-sıfır-3.jpg" alt="Karasu Özcan Konaklama kahvaltı alanı"><div class="goverlay"></div></div>
-    <div class="gallery-item g3"><img src="karasu-otel-denize-sıfır-4.jpg" alt="Karasu Özcan Konaklama Otel Girisi"><div class="goverlay"></div></div>
-    <div class="gallery-item g4"><img src="karasu-otel-denize-sıfır-kahvaltı-6.jpg" alt="Karasu Otel bahçe kahvaltı"><div class="goverlay"></div></div>
-    <div class="gallery-item g5"><img src="karasu-otel-denize-sıfır-1.jpg" alt="Karasu Özcan Otel ic mekan kahvaltı"><div class="goverlay"></div></div>
-    <div class="gallery-item g6"><img src="karasu-otel-denize-sıfır-2.jpg" alt="Karasu Otel Denize Sıfır Oda"><div class="goverlay"></div></div>
+  <div style="position:relative;">
+    <div class="gallery-grid" id="galleryGrid">
+      <div class="gallery-item g1"><img src="karasu-otel-denize-sıfır-5.jpg" alt="Karasu denize sıfır otel giris"><div class="goverlay"></div></div>
+      <div class="gallery-item g2"><img src="karasu-otel-denize-sıfır-3.jpg" alt="Karasu Özcan Konaklama kahvaltı alanı"><div class="goverlay"></div></div>
+      <div class="gallery-item g3"><img src="karasu-otel-denize-sıfır-4.jpg" alt="Karasu Özcan Konaklama Otel Girisi"><div class="goverlay"></div></div>
+      <div class="gallery-item g4"><img src="karasu-otel-denize-sıfır-kahvaltı-6.jpg" alt="Karasu Otel bahçe kahvaltı"><div class="goverlay"></div></div>
+      <div class="gallery-item g5"><img src="karasu-otel-denize-sıfır-1.jpg" alt="Karasu Özcan Otel ic mekan kahvaltı"><div class="goverlay"></div></div>
+      <div class="gallery-item g6"><img src="karasu-otel-denize-sıfır-2.jpg" alt="Karasu Otel Denize Sıfır Oda"><div class="goverlay"></div></div>
+    </div>
+    <button class="gallery-prev" onclick="scrollGallery(-1)">&#8249;</button>
+    <button class="gallery-next" onclick="scrollGallery(1)">&#8250;</button>
   </div>
 </section>
 
@@ -1027,6 +1052,10 @@ function updateDots(id) {
   const dots = document.getElementById(id.replace('Slides','Dots'));
   if (!dots) return;
   [...dots.children].forEach((d,i) => d.classList.toggle('active', i === sliderIndex[id]));
+}
+  function scrollGallery(dir) {
+  const grid = document.getElementById('galleryGrid');
+  grid.scrollBy({ left: dir * (window.innerWidth * 0.85 + 8), behavior: 'smooth' });
 }
 </script>
 </body>
