@@ -494,8 +494,8 @@ footer { background:var(--dark); padding:56px 5% 28px; }
   <ul class="nav-links">
     <li><a href="/karasu-otel-odalari">Odalar</a></li>
     <li><a href="#galeri">Galeri</a></li>
-    <li><a href="/karasu-otel-fiyatlari">Fiyatlar</a></li>
-    <li><a href="/karasu-gezilecek-yerler" onclick="closeMenu()">Gezilecek Yerler</a></li>
+    <li><a href="/karasu-otel-fiyatlari" onclick="gtag('event','price_click');">Fiyatlar</a></li>
+    <li><a href="/karasu-gezilecek-yerler" onclick="gtag('event','places_click'); closeMenu()">Gezilecek Yerler</a></li>
     <li><a href="#iletisim">İletişim</a></li>
   </ul>
   <div class="nav-cta">
@@ -512,8 +512,8 @@ footer { background:var(--dark); padding:56px 5% 28px; }
 <div class="mobile-menu" id="mobileMenu">
   <a href="/karasu-otel-odalari" onclick="closeMenu()">Odalar</a>
   <a href="#galeri" onclick="closeMenu()">Galeri</a>
-  <a href="/karasu-gezilecek-yerler">Gezilecek Yerler</a>
-  <a href="/karasu-otel-fiyatlari" onclick="closeMenu()">Fiyatlar</a>
+  <a href="/karasu-gezilecek-yerler" onclick="gtag('event','places_click'); closeMenu()">Gezilecek Yerler</a>
+  <a href="/karasu-otel-fiyatlari" onclick="gtag('event','price_click'); closeMenu()">Fiyatlar</a>
   <a href="#iletisim" onclick="closeMenu()">İletişim</a>
   <div class="mobile-menu-btns">
     <a href="tel:+902647184705" class="nav-btn nav-btn-call" onclick="gtag('event', 'phone_click'); closeMenu()">📞 Ara</a>
@@ -539,7 +539,7 @@ footer { background:var(--dark); padding:56px 5% 28px; }
   <div class="scroll-hint">Aşağı kaydır</div>
 </section>
   <div style="text-align:center; padding:12px 5%; background:var(--dark);">
-  <a href="/karasu-otel-fiyatlari" style="color:var(--gold); font-size:0.8rem; letter-spacing:2px; text-transform:uppercase; text-decoration:none;">Karasu Otel Fiyatlarını Görmek İçin Tıklayın →</a>
+  <a href="/karasu-otel-fiyatlari" style="color:var(--gold); font-size:0.8rem; letter-spacing:2px; text-transform:uppercase; text-decoration:none;" onclick="gtag('event','price_click');">Karasu Otel Fiyatlarını Görmek İçin Tıklayın →</a>
 </div>
    <!-- SEO BLOK -->
 <section style="background:var(--white); padding:52px 5%; text-align:center;">
@@ -895,10 +895,10 @@ footer { background:var(--dark); padding:56px 5% 28px; }
       <h4>Sayfalar</h4>
       <ul>
         <li><a href="/karasu-otel-odalari">Odalarımız</a></li>
-        <li><a href="/karasu-otel-fiyatlari">Fiyatlar</a></li>
+        <li><a href="/karasu-otel-fiyatlari" onclick="gtag('event','price_click');">Fiyatlar</a></li>
         <li><a href="/karasu-denize-sifir-otel">Denize Sıfır Otel</a></li>
         <li><a href="#galeri">Galeri</a></li>
-        <li><a href="/karasu-gezilecek-yerler">Gezilecek Yerler</a></li>
+        <li><a href="/karasu-gezilecek-yerler" onclick="gtag('event','places_click');">Gezilecek Yerler</a></li>
         <li><a href="#iletisim">İletişim</a></li>
       </ul>
     </div>
