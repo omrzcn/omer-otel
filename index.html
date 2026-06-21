@@ -607,14 +607,6 @@ footer { background:var(--dark); padding:56px 5% 28px; }
     <input type="text" id="cikis" placeholder="Çıkış tarihi" readonly>
   </div>
   <div class="rez-field">
-    <label>Oda Tipi</label>
-    <select id="odaTipi">
-      <option value="">Seçiniz</option>
-      <option value="Standart Oda">Standart Oda</option>
-      <option value="Aile Odası">Aile Odası</option>
-    </select>
-  </div>
-  <div class="rez-field">
     <label>Yetişkin</label>
     <select id="kisi">
       <option value="1">1 Kişi</option>
@@ -1021,14 +1013,12 @@ function whatsappRez() {
 
   const g = document.getElementById('giris').value;
   const c = document.getElementById('cikis').value;
-  const o = document.getElementById('odaTipi').value;
   const k = document.getElementById('kisi').value;
   const cs = parseInt(document.getElementById('cocukSayisi').value);
 
   let msg = 'Merhaba, bilgi almak istiyorum.';
   if (g) msg += '\nGiriş: ' + g;
   if (c) msg += '\nÇıkış: ' + c;
-  if (o) msg += '\nOda: ' + o;
   msg += '\nYetişkin: ' + k;
   if (cs > 0) {
     msg += '\nÇocuk: ' + cs;
