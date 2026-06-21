@@ -615,7 +615,7 @@ footer { background:var(--dark); padding:56px 5% 28px; }
     </select>
   </div>
   <div class="rez-field">
-    <label>Kişi Sayısı</label>
+    <label>Yetişkin</label>
     <select id="kisi">
       <option value="1">1 Kişi</option>
       <option value="2" selected>2 Kişi</option>
@@ -623,7 +623,22 @@ footer { background:var(--dark); padding:56px 5% 28px; }
       <option value="4">4 Kişi</option>
     </select>
   </div>
+  <div class="rez-field">
+    <label>Çocuk</label>
+    <select id="cocukSayisi" onchange="cocukGuncelle()">
+      <option value="0">Çocuk yok</option>
+      <option value="1">1 Çocuk</option>
+      <option value="2">2 Çocuk</option>
+      <option value="3">3 Çocuk</option>
+    </select>
+  </div>
   <button class="rez-submit" onclick="whatsappRez()">Rezervasyon Sorgula</button>
+</div>
+<div id="cocukYaslariPanel" style="display:none; background:var(--dark); padding:14px 5%; border-top:1px solid rgba(255,255,255,0.07);">
+  <div style="display:flex; gap:20px; flex-wrap:wrap; align-items:center;">
+    <span style="font-size:0.6rem; letter-spacing:3px; text-transform:uppercase; color:var(--gold); white-space:nowrap;">Çocuk Yaşları</span>
+    <div id="yasInputlari" style="display:flex; gap:12px; flex-wrap:wrap;"></div>
+  </div>
 </div>
   <!-- HAKKIMIZDA -->
 <section id="hakkimizda" style="background:var(--white); padding:96px 5%;">
@@ -948,6 +963,41 @@ function closeMenu() {
   document.body.style.overflow = '';
 }
 
+function cocukGuncelle() {
+  const sayi = parseInt(document.getElementById('cocukSayisi').value);
+  const panel = document.getElementById('cocukYaslariPanel');
+  const yasDiv = document.getElementById('yasInputlari');
+
+  if (sayi === 0) { panel.style.display = 'none'; return; }
+
+  panel.style.display = 'block';
+  yasDiv.innerHTML = '';
+
+  for (let i = 1; i <= sayi; i++) {
+    const wrap = document.createElement('div');
+    wrap.style.cssText = 'display:flex; flex-direction:column; gap:5px; align-items:center;';
+
+    const lbl = document.createElement('span');
+    lbl.style.cssText = 'font-size:0.6rem; letter-spacing:2px; text-transform:uppercase; color:var(--muted);';
+    lbl.textContent = i + '. Çocuk';
+
+    const sel = document.createElement('select');
+    sel.id = 'cocukYas' + i;
+    sel.style.cssText = 'background:#2a2820; border:1px solid rgba(255,255,255,0.15); color:rgba(255,255,255,0.85); padding:8px 14px; font-family:Jost,sans-serif; font-size:0.84rem; outline:none; cursor:pointer;';
+
+    for (let age = 0; age <= 17; age++) {
+      const opt = document.createElement('option');
+      opt.value = age;
+      opt.textContent = age === 0 ? '1 yaşından küçük' : age + ' yaş';
+      sel.appendChild(opt);
+    }
+
+    wrap.appendChild(lbl);
+    wrap.appendChild(sel);
+    yasDiv.appendChild(wrap);
+  }
+}
+
 function whatsappRez() {
   if (!validateDates(true)) return;
 
@@ -955,15 +1005,24 @@ function whatsappRez() {
   const c = document.getElementById('cikis').value;
   const o = document.getElementById('odaTipi').value;
   const k = document.getElementById('kisi').value;
+  const cs = parseInt(document.getElementById('cocukSayisi').value);
 
-  let msg = 'Merhaba, bilgi almak  istiyorum.';
+  let msg = 'Merhaba, bilgi almak istiyorum.';
   if (g) msg += '\nGiriş: ' + g;
   if (c) msg += '\nÇıkış: ' + c;
   if (o) msg += '\nOda: ' + o;
-  if (k) msg += '\nKişi: ' + k;
+  msg += '\nYetişkin: ' + k;
+  if (cs > 0) {
+    msg += '\nÇocuk: ' + cs;
+    const yaslar = [];
+    for (let i = 1; i <= cs; i++) {
+      const yas = document.getElementById('cocukYas' + i).value;
+      yaslar.push(yas === '0' ? '1 yaşından küçük' : yas + ' yaş');
+    }
+    msg += '\nÇocuk Yaşları: ' + yaslar.join(', ');
+  }
 
   window.open('https://wa.me/905553331454?text=' + encodeURIComponent(msg), '_blank');
-
 }
 
 function formWA() {
