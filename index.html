@@ -320,6 +320,7 @@ section { padding:96px 5%; }
 .gallery-grid .g3 { grid-column:3; grid-row:1; }
 .gallery-grid .g4 { grid-column:1; grid-row:2; }
 .gallery-grid .g5 { grid-column:3; grid-row:2; }
+.gallery-grid .g6 { display:none; }
 .gallery-item { overflow:hidden; position:relative; cursor:pointer; }
 .gallery-item img { width:100%; height:100%; object-fit:cover; transition:transform 0.65s; display:block; }
 .gallery-item:hover img { transform:scale(1.07); }
@@ -501,7 +502,7 @@ footer { background:var(--dark); padding:56px 5% 28px; }
   <div class="nav-cta">
     <a href="tel:+902647184705" class="nav-btn nav-btn-call" onclick="gtag('event', 'phone_click');">📞 Ara</a>
     <a href="https://wa.me/905553331454?text=Merhaba%20bilgi%20almak%20istiyorum" target="_blank" class="nav-btn nav-btn-wa" onclick="gtag('event', 'whatsapp_click');">WhatsApp</a>
-    <a href="#reservation-bar" class="nav-btn nav-btn-rez" onclick="gtag('event', 'reservation_click');">Rezervasyon</a>
+    <a href="#rezervasyon-bar" class="nav-btn nav-btn-rez" onclick="gtag('event', 'reservation_click');">Rezervasyon</a>
   </div>
   <div class="hamburger" id="hamburger" onclick="toggleMenu()">
     <span></span><span></span><span></span>
@@ -517,8 +518,8 @@ footer { background:var(--dark); padding:56px 5% 28px; }
   <a href="#iletisim" onclick="closeMenu()">İletişim</a>
   <div class="mobile-menu-btns">
     <a href="tel:+902647184705" class="nav-btn nav-btn-call" onclick="gtag('event', 'phone_click'); closeMenu()">📞 Ara</a>
-    <a href="https://wa.me/905553331454" target="_blank" class="nav-btn nav-btn-wa" onclick="gtag('event', 'whatsapp_click');" closeMenu()">WhatsApp</a>
-    <a href="#rezervasyon-bar" class="nav-btn nav-btn-rez" onclick="gtag('event', 'reservation_click');" closeMenu()">Rezervasyon</a>
+    <a href="https://wa.me/905553331454" target="_blank" class="nav-btn nav-btn-wa" onclick="gtag('event', 'whatsapp_click'); closeMenu()">WhatsApp</a>
+    <a href="#rezervasyon-bar" class="nav-btn nav-btn-rez" onclick="gtag('event', 'reservation_click'); closeMenu()">Rezervasyon</a>
   </div>
 </div>
 
